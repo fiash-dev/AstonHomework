@@ -19,7 +19,6 @@ public class Main {
             return;
         }
 
-        // Единый стрим
         students.stream()
                 .peek(System.out::println)
                 .flatMap(student -> student.getBooks().stream())
