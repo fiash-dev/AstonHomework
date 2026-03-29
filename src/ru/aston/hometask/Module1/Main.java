@@ -1,9 +1,10 @@
-package Module1;
+package ru.aston.hometask.Module1;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, "Ваня");
         ImmutableClass immutableClass = new ImmutableClass(1, "Ваня", map);
