@@ -1,0 +1,12 @@
+package ru.aston.hometask.Module3.ChainOfResponsibility;
+
+public class Main {
+    public static void main(String[] args) {
+        ValidateTransaction firstValidation = new MinLimit();
+        ValidateTransaction secondValidation = new MaxLimit();
+        firstValidation.setNext(secondValidation);
+
+        firstValidation.check(new MoneyTransaction(2000));
+        firstValidation.check(new MoneyTransaction(12000));
+    }
+}
