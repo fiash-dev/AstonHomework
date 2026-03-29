@@ -2,7 +2,7 @@ package ru.aston.hometask.Module2;
 
 import java.util.Objects;
 
-class Book {
+public class Book {
     private String title;
     private int year;
     private int pages;
