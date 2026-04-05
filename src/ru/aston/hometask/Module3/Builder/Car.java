@@ -48,9 +48,6 @@ public class Car {
         }
 
         public Builder setYear(int year) {
-            if (year < 1980) {
-                throw new IllegalStateException("Год модели не должно быть меньше 1980");
-            }
             this.year = year;
             return this;
         }
@@ -68,6 +65,12 @@ public class Car {
         public Car build() {
             if (model == null || model.trim().isEmpty()) {
                 throw new IllegalStateException("Модель обязательна для заполнения");
+            }
+            if (color == null || color.trim().isEmpty()) {
+                throw new IllegalStateException("Цвет авто обязательна для заполнения");
+            }
+            if (power < 0) {
+                throw new IllegalStateException("Мощность не может быть нулевой");
             }
             if (year < 1980) {
                 throw new IllegalStateException("Год модели не должно быть меньше 1980");
