@@ -7,14 +7,6 @@ public class Car {
     private final int power;
     private final boolean automaticTransmission;
 
-    private Car(Builder builder) {
-        this.model = builder.model;
-        this.color = builder.color;
-        this.year = builder.year;
-        this.power = builder.power;
-        this.automaticTransmission = builder.automaticTransmission;
-    }
-
     @Override
     public String toString() {
         return "Автомобиль [" +
@@ -26,13 +18,24 @@ public class Car {
                 ']';
     }
 
+    private Car(Builder builder) {
+        this.model = builder.model;
+        this.color = builder.color;
+        this.year = builder.year;
+        this.power = builder.power;
+        this.automaticTransmission = builder.automaticTransmission;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static class Builder {
         private String model;
         private String color;
         private int year;
         private int power;
         private boolean automaticTransmission;
-
 
         public Builder setModel(String model) {
             this.model = model;
@@ -45,6 +48,9 @@ public class Car {
         }
 
         public Builder setYear(int year) {
+            if (year < 1980) {
+                throw new IllegalStateException("Год модели не должно быть меньше 1980");
+            }
             this.year = year;
             return this;
         }
@@ -54,12 +60,18 @@ public class Car {
             return this;
         }
 
-        public Builder setAutomaticTransmission(boolean automaticTransmission) {
+        public Builder isAutomaticTransmission(boolean automaticTransmission) {
             this.automaticTransmission = automaticTransmission;
             return this;
         }
 
         public Car build() {
+            if (model == null || model.trim().isEmpty()) {
+                throw new IllegalStateException("Модель обязательна для заполнения");
+            }
+            if (year < 1980) {
+                throw new IllegalStateException("Год модели не должно быть меньше 1980");
+            }
             return new Car(this);
         }
     }

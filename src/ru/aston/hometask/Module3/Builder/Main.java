@@ -2,20 +2,20 @@ package ru.aston.hometask.Module3.Builder;
 
 public class Main {
     public static void main(String[] args) {
-        Car carPorshe = new Car.Builder()
+        Car carPorshe = Car.builder()
                 .setModel("Spyder")
                 .setColor("Blue")
                 .setYear(2024)
                 .setPower(500)
-                .setAutomaticTransmission(true)
+                .isAutomaticTransmission(true)
                 .build();
 
-        Car carLada = new Car.Builder()
+        Car carLada = Car.builder()
                 .setModel("Vesta")
                 .setColor("White")
                 .setYear(2017)
                 .setPower(106)
-                .setAutomaticTransmission(false)
+                .isAutomaticTransmission(false)
                 .build();
 
         System.out.println(carPorshe);
