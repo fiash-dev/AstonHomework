@@ -20,7 +20,7 @@ public class Main {
             scanner.close();
         }
         List<Student> students = jasonParser.loadStudentsFromJson(filePath);
-
+        scanner.close();
 
 
         students.stream()
