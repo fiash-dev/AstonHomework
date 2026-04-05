@@ -1,25 +1,27 @@
 package ru.aston.hometask.Module2;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.type.TypeReference;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) {
-        ObjectMapper mapper = new ObjectMapper();
-        List<Student> students = null;
-        try {
-            students = mapper.readValue(new File("src/ru/aston/hometask/Module2/resource/students.json"), new TypeReference<List<Student>>() {
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
+    public static void main(String[] args) throws IOException {
+
+        final Validation validation= new Validation();
+        final JsonParser jasonParser = new JsonParser();
+
+        System.out.print("Введите путь к JSON‑файлу со студентами: ");
+        Scanner scanner = new Scanner(System.in);
+        String filePath = scanner.nextLine().trim();
+
+        if (!validation.isValidation(filePath)) {
+            scanner.close();
         }
+        List<Student> students = jasonParser.loadStudentsFromJson(filePath);
+
+
 
         students.stream()
                 .peek(System.out::println)
