@@ -1,13 +1,15 @@
 package ru.aston.hometask.Module3.ChainOfResponsibility;
 
-public class MoneyTransaction {
-    private double amount;
+import java.math.BigDecimal;
 
-    public MoneyTransaction(double amount) {
+public class MoneyTransaction {
+    private BigDecimal amount;
+
+    public MoneyTransaction(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 }
